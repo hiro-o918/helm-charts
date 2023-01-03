@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "redash-searcher.web.fullname" . }}
+  labels:
+    app.kubernetes.io/component: web
+    {{- include "redash-searcher.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.web.service.type }}
+  ports:
+    - port: {{ .Values.web.service.port }}
+      targetPort: 3000
+      protocol: TCP
+      name: web
+  selector:
+    {{- include "redash-searcher.selectorLabels" . | nindent 4 }}

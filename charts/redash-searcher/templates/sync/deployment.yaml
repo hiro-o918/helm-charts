@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "redash-searcher.sync.fullname" . }}
+  labels:
+    app.kubernetes.io/component: sync
+    {{- include "redash-searcher.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: sync
+      {{- include "redash-searcher.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.sync.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        app.kubernetes.io/component: sync
+        {{- include "redash-searcher.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.sync.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "redash-searcher.sync.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.sync.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.sync.securityContext | nindent 12 }}
+          image: "{{ .Values.sync.image.repository }}:{{ .Values.sync.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.sync.image.pullPolicy }}
+          env:
+            - name: LOG_LEVEL
+              value: {{ .Values.sync.logLevel }}
+            - name: REDASH__API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "redash-searcher.fullname" . }}
+                  key: REDASH_API_KEY
+            - name: REDASH__URL
+              value: {{ .Values.redash.url }}
+            - name: OPEN_SEARCH__URL
+              value: {{ .Values.opensearch.url }}
+            {{- if .Values.opensearch.isBasicAuth }}
+            - name: OPEN_SEARCH__USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "redash-searcher.fullname" . }}
+                  key: OPEN_SEARCH_USERNAME
+            - name: OPEN_SEARCH__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "redash-searcher.fullname" . }}
+                  key: OPEN_SEARCH_PASSWORD
+            {{- end }}
+          resources:
+            {{- toYaml .Values.sync.resources | nindent 12 }}
+      {{- with .Values.sync.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.sync.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.sync.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
