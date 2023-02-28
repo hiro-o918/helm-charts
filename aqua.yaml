@@ -1,0 +1,13 @@
+---
+# aqua - Declarative CLI Version Manager
+# https://aquaproj.github.io/
+registries:
+- type: standard
+  ref: v3.138.0 # renovate: depName=aquaproj/aqua-registry
+packages:
+  - name: helm/helm@v3.11.1
+  - name: norwoodj/helm-docs@v1.11.0
+  - name: helm/chart-testing@v3.7.1
+  - name: helm/chart-releaser@v1.5.0
+  - name: mikefarah/yq@v4.31.1
+

@@ -1,0 +1,54 @@
+name: Lint Charts
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'charts/**'
+      - '.github/workflows/lint.yaml'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: aquaproj/aqua-installer@v2.0.2
+        with:
+          aqua_version: v1.34.0
+
+      - name: Install poetry
+        run: pipx install poetry
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: poetry
+
+      - name: Install dependencies
+        run: |
+            poetry install
+            echo "PATH=$PATH:$(poetry env info -p)/bin" >> $GITHUB_ENV
+
+      - name: Run chart-testing (list-changed)
+        id: list-changed
+        run: |
+          changed=$(ct list-changed --target-branch ${{ github.event.repository.default_branch }})
+          if [[ -n "$changed" ]]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get etc of chart-testing
+        run: |
+          ct_version=$(ct version | yq '.Version')
+          mkdir ~/.ct
+          curl -sSL -o ~/.ct/chart_schema.yaml https://raw.githubusercontent.com/helm/chart-testing/${ct_version}/etc/chart_schema.yaml
+          curl -sSL -o ~/.ct/lintconf.yaml https://raw.githubusercontent.com/helm/chart-testing/${ct_version}/etc/lintconf.yaml
+
+      - name: Run chart-testing (lint)
+        run: |
+          ct lint --target-branch ${{ github.event.repository.default_branch }}
