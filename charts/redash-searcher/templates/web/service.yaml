@@ -13,4 +13,5 @@ spec:
       protocol: TCP
       name: web
   selector:
+    app.kubernetes.io/component: web
     {{- include "redash-searcher.selectorLabels" . | nindent 4 }}
