@@ -10,7 +10,7 @@ web:
   image:
     repository: ghcr.io/hiro-o918/redash-searcher-web
     pullPolicy: IfNotPresent
-    # Overrides the image tag whose default is the chart appVersion.
+    # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
 
   imagePullSecrets: []
@@ -18,12 +18,12 @@ web:
   fullnameOverride: ""
 
   serviceAccount:
-    # Specifies whether a service account should be created
+    # -- Specifies whether a service account should be created
     create: true
-    # Annotations to add to the service account
+    # -- Annotations to add to the service account
     annotations: {}
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
+    # -- The name of the service account to use.
+    # -- If not set and create is true, a name is generated using the fullname template
     name: ""
 
   podAnnotations: {}
@@ -89,7 +89,7 @@ sync:
   image:
     repository: ghcr.io/hiro-o918/redash-searcher-sync
     pullPolicy: IfNotPresent
-    # Overrides the image tag whose default is the chart appVersion.
+    # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
 
   imagePullSecrets: []
@@ -97,12 +97,12 @@ sync:
   fullnameOverride: ""
 
   serviceAccount:
-    # Specifies whether a service account should be created
+    # -- Specifies whether a service account should be created
     create: true
-    # Annotations to add to the service account
+    # --Annotations to add to the service account
     annotations: {}
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
+    # -- The name of the service account to use.
+    # -- If not set and create is true, a name is generated using the fullname template
     name: ""
 
   podAnnotations: {}
@@ -139,12 +139,16 @@ sync:
   logLevel: INFO
 
 redash:
+  # -- **Must Specify**: Redash URL should be accessible from the pod of this chart with API key.
   url: ""
+  # -- **Must Specify**: Redash URL accessed by users. This is used for generating links to Redash on Web
   publicUrl: ""
   # do not pass api key from values, use secret
   # apiKey: ""
 opensearch:
+  # -- **Must Specify**: OpenSearch URL should be accessible from the pod of this chart with username and password.
   url: ""
+  # -- Is OpenSearch accessed by Basic Auth
   isBasicAuth: true
   # do not pass auth from values, use secret
   # username: ""
@@ -152,6 +156,9 @@ opensearch:
 
 secrets:
   create: false
+  # -- Redash api key
   redashApiKey: ""
+  # -- OpenSearch username
   opensearchUsername: ""
+  # -- OpenSearch password
   opensearchPassword: ""
