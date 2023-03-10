@@ -1,8 +1,8 @@
 # redash-searcher
 
-![Version: 0.1.2](https://img.shields.io/badge/Version-0.1.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.1.3](https://img.shields.io/badge/AppVersion-0.1.3-informational?style=flat-square)
+![Version: 0.1.3](https://img.shields.io/badge/Version-0.1.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.1](https://img.shields.io/badge/AppVersion-0.2.1-informational?style=flat-square)
 
-a Helm chart for Redash Searcher (https://github.com/hiro-o918/redash-searcher)
+a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
 
 ## Maintainers
 
@@ -25,7 +25,7 @@ a Helm chart for Redash Searcher (https://github.com/hiro-o918/redash-searcher)
 | sync.affinity | object | `{}` |  |
 | sync.fullnameOverride | string | `""` |  |
 | sync.image.pullPolicy | string | `"IfNotPresent"` |  |
-| sync.image.repository | string | `"ghcr.io/hiro-o918/redash-searcher-sync"` |  |
+| sync.image.repository | string | `"gunosy/redash-searcher-sync"` |  |
 | sync.image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | sync.imagePullSecrets | list | `[]` |  |
 | sync.logLevel | string | `"INFO"` |  |
@@ -41,13 +41,14 @@ a Helm chart for Redash Searcher (https://github.com/hiro-o918/redash-searcher)
 | sync.serviceAccount.name | string | `""` | If not set and create is true, a name is generated using the fullname template |
 | sync.tolerations | list | `[]` |  |
 | web.affinity | object | `{}` |  |
+| web.appUrl | string | `""` | **Must Specify**: The URL of redash-searcher-web |
 | web.autoscaling.enabled | bool | `false` |  |
 | web.autoscaling.maxReplicas | int | `100` |  |
 | web.autoscaling.minReplicas | int | `1` |  |
 | web.autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | web.fullnameOverride | string | `""` |  |
 | web.image.pullPolicy | string | `"IfNotPresent"` |  |
-| web.image.repository | string | `"ghcr.io/hiro-o918/redash-searcher-web"` |  |
+| web.image.repository | string | `"gunosy/redash-searcher-web"` |  |
 | web.image.tag | string | `""` | Overrides the image tag whose default is the chart appVersion. |
 | web.imagePullSecrets | list | `[]` |  |
 | web.ingress.annotations | object | `{}` |  |
