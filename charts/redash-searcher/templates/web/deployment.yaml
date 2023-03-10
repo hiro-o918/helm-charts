@@ -42,6 +42,8 @@ spec:
           env:
             - name: NEXT_PUBLIC_REDASH__URL
               value: {{ include "redash-searcher.web.redashPublicUrl" . }}
+            - name: APP_NEXT_PUBLIC_APP__URL
+              value: {{ .Values.web.appUrl }}
             - name: OPEN_SEARCH__URL
               value: {{ .Values.opensearch.url }}
             {{- if .Values.opensearch.isBasicAuth }}

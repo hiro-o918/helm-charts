@@ -8,7 +8,7 @@ web:
   replicaCount: 1
 
   image:
-    repository: ghcr.io/hiro-o918/redash-searcher-web
+    repository: gunosy/redash-searcher-web
     pullPolicy: IfNotPresent
     # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
@@ -16,6 +16,9 @@ web:
   imagePullSecrets: []
   nameOverride: ""
   fullnameOverride: ""
+
+  # -- **Must Specify**: The URL of redash-searcher-web
+  appUrl: ""
 
   serviceAccount:
     # -- Specifies whether a service account should be created
@@ -87,7 +90,7 @@ web:
 sync:
   name: sync
   image:
-    repository: ghcr.io/hiro-o918/redash-searcher-sync
+    repository: gunosy/redash-searcher-sync
     pullPolicy: IfNotPresent
     # -- Overrides the image tag whose default is the chart appVersion.
     tag: ""
