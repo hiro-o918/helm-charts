@@ -153,6 +153,10 @@ opensearch:
   url: ""
   # -- Is OpenSearch accessed by Basic Auth
   isBasicAuth: true
+  # -- Max retry count on ping to OpenSearch when starting up
+  maxRetryCountOnPing: 6
+  # -- Interval between retries on ping to OpenSearch when starting up
+  pingInterval: "10s"
   # do not pass auth from values, use secret
   # username: ""
   # password: ""
