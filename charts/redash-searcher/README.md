@@ -1,6 +1,6 @@
 # redash-searcher
 
-![Version: 0.1.4](https://img.shields.io/badge/Version-0.1.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.2](https://img.shields.io/badge/AppVersion-0.2.2-informational?style=flat-square)
+![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.4](https://img.shields.io/badge/AppVersion-0.2.4-informational?style=flat-square)
 
 a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
 
@@ -15,6 +15,8 @@ a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | opensearch.isBasicAuth | bool | `true` | Is OpenSearch accessed by Basic Auth |
+| opensearch.maxRetryCountOnPing | int | `6` | Max retry count on ping to OpenSearch when starting up |
+| opensearch.pingInterval | string | `"10s"` | Interval between retries on ping to OpenSearch when starting up |
 | opensearch.url | string | `""` | **Must Specify**: OpenSearch URL should be accessible from the pod of this chart with username and password. |
 | redash.publicUrl | string | `""` | **Must Specify**: Redash URL accessed by users. This is used for generating links to Redash on Web |
 | redash.url | string | `""` | **Must Specify**: Redash URL should be accessible from the pod of this chart with API key. |

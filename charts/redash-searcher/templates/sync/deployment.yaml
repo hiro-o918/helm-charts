@@ -57,6 +57,10 @@ spec:
                   name: {{ include "redash-searcher.fullname" . }}
                   key: OPEN_SEARCH_PASSWORD
             {{- end }}
+            - name: OPEN_SEARCH__MAX_RETRY_COUNT_ON_PING
+              value: {{ .Values.opensearch.maxRetryCountOnPing | quote }}
+            - name: OPEN_SEARCH__PING_INTERVAL
+              value: {{ .Values.opensearch.pingInterval | quote }}
           resources:
             {{- toYaml .Values.sync.resources | nindent 12 }}
       {{- with .Values.sync.nodeSelector }}
