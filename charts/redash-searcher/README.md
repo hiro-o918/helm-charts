@@ -1,6 +1,6 @@
 # redash-searcher
 
-![Version: 0.1.5](https://img.shields.io/badge/Version-0.1.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.4](https://img.shields.io/badge/AppVersion-0.2.4-informational?style=flat-square)
+![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 0.2.6](https://img.shields.io/badge/AppVersion-0.2.6-informational?style=flat-square)
 
 a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
 
@@ -14,6 +14,7 @@ a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| opensearch.firstFullRefresh | bool | `false` | Full refresh when starting app if true |
 | opensearch.isBasicAuth | bool | `true` | Is OpenSearch accessed by Basic Auth |
 | opensearch.maxRetryCountOnPing | int | `6` | Max retry count on ping to OpenSearch when starting up |
 | opensearch.pingInterval | string | `"10s"` | Interval between retries on ping to OpenSearch when starting up |

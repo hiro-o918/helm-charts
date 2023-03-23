@@ -157,6 +157,8 @@ opensearch:
   maxRetryCountOnPing: 6
   # -- Interval between retries on ping to OpenSearch when starting up
   pingInterval: "10s"
+  # -- Full refresh when starting app if true
+  firstFullRefresh: false
   # do not pass auth from values, use secret
   # username: ""
   # password: ""

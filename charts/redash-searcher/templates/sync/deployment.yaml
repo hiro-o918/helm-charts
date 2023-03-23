@@ -61,6 +61,8 @@ spec:
               value: {{ .Values.opensearch.maxRetryCountOnPing | quote }}
             - name: OPEN_SEARCH__PING_INTERVAL
               value: {{ .Values.opensearch.pingInterval | quote }}
+            - name: OPEN_SEARCH__FIRST_FULL_REFRESH
+              value: {{ .Values.opensearch.firstFullRefresh | quote }}
           resources:
             {{- toYaml .Values.sync.resources | nindent 12 }}
       {{- with .Values.sync.nodeSelector }}
