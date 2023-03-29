@@ -2,6 +2,19 @@ apiVersion: v1
 entries:
   redash-searcher:
   - apiVersion: v2
+    appVersion: 0.2.7
+    created: "2023-03-29T10:01:58.676415609Z"
+    description: a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
+    digest: b85a75f4d763da99cbccff1188f4c8e7c29c5eaeb71a3773476101eff35b15f4
+    maintainers:
+    - name: hiro-o918
+      url: https://github.com/hiro-o918
+    name: redash-searcher
+    type: application
+    urls:
+    - https://github.com/gunosy/public-helm-charts/releases/download/redash-searcher-0.1.7/redash-searcher-0.1.7.tgz
+    version: 0.1.7
+  - apiVersion: v2
     appVersion: 0.2.6
     created: "2023-03-23T23:43:01.790269378Z"
     description: a Helm chart for Redash Searcher (https://github.com/gunosy/redash-searcher)
@@ -92,4 +105,4 @@ entries:
     urls:
     - https://github.com/hiro-o918/helm-charts/releases/download/redash-searcher-0.1.0/redash-searcher-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-23T23:43:01.790383779Z"
+generated: "2023-03-29T10:01:58.676445109Z"
