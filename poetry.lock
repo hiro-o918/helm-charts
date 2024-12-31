@@ -29,11 +29,11 @@ testing-integration = ["build[virtualenv]", "filelock (>=3.4.0)", "jaraco.envs (
 
 [[package]]
 name = "yamale"
-version = "4.0.4"
+version = "5.3.0"
 description = "A schema and validator for YAML."
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.8"
 
 [package.dependencies]
 pyyaml = "*"
@@ -54,7 +54,7 @@ setuptools = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "8b6659f5b7dd27261b52af0804871c1d7c9b0fe0f40ea938d83def01efbf2128"
+content-hash = "56356c9c7db12bdd08b4915762b3a69dc27aa4cfb078158abac670d1f92b0e7e"
 
 [metadata.files]
 pathspec = [
@@ -108,8 +108,8 @@ setuptools = [
     {file = "setuptools-67.4.0.tar.gz", hash = "sha256:e5fd0a713141a4a105412233c63dc4e17ba0090c8e8334594ac790ec97792330"},
 ]
 yamale = [
-    {file = "yamale-4.0.4-py3-none-any.whl", hash = "sha256:04f914c0886bda03ac20f8468272cfd9374a634a062549490eff2beedeb30497"},
-    {file = "yamale-4.0.4.tar.gz", hash = "sha256:e524caf71cbbbd15aa295e8bdda01688ac4b5edaf38dd60851ddff6baef383ba"},
+    {file = "yamale-5.3.0-py3-none-any.whl", hash = "sha256:4671d2d502782222a69056e95b5ff26318da1ca31a54f9c2c90624458c44783a"},
+    {file = "yamale-5.3.0.tar.gz", hash = "sha256:68af23b6155f496fb11c831a504eb9f9a474a997a8571d6f249dc044e6a65af3"},
 ]
 yamllint = [
     {file = "yamllint-1.29.0-py3-none-any.whl", hash = "sha256:5153bf9f8205aa9dc6af6217e38bd4f5baf09d9a7c6f4ae1e23f90d9c00c49c5"},

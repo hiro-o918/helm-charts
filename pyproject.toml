@@ -10,7 +10,7 @@ python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 yamllint = "=1.29.0"
-yamale = "=4.0.4"
+yamale = "=5.3.0"
 
 [build-system]
 requires = ["poetry-core"]
