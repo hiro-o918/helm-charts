@@ -14,11 +14,11 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: aquaproj/aqua-installer@v2.0.2
+      - uses: aquaproj/aqua-installer@v3.1.1
         with:
           aqua_version: v1.34.0
 
